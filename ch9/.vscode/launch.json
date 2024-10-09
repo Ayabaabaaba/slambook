@@ -1,0 +1,42 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "gdb", // 左侧Run and Debug里，上方下拉栏里的gdb表示c++编译
+            "type": "cppdbg",
+            "request": "launch",
+            // "program": "${workspaceFolder}/build/${fileBasenameNoExtension}", // 需要手动创建build文件夹，或者再增加一条创建build文件夹的指令
+            "program": "${fileDirname}/build/${fileBasenameNoExtension}", // 可执行程序放在.cpp所处目录下
+            "args": ["problem-16-22106-pre.txt"], // 传递argv参数（第一个可执行程序名已经写在"program"中了）
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "preLaunchTask": "build(g++)",
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            // "postDebugTask": "clean"  // 可选，用于调试后清空终端信息（如果需要的话）  
+        },
+        {
+            "name": "Python3", // 左侧Run and Debug里，上方下拉栏里的Python3表示Python编译
+            "type": "debugpy",
+            "request": "launch",
+            "stopOnEntry": true,
+            // "pythonPath": "${config:python.pythonPath}",
+            "program": "${file}",
+            "cwd": "${workspaceFolder}",
+            "env": {},
+            "envFile": "${workspaceFolder}/.env",
+            "console": "integratedTerminal"
+        }
+    ]
+}
